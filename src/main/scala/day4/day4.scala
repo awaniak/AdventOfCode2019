@@ -10,15 +10,15 @@ object day4 extends App {
     }
   }
 
-  def areThereTwoAdjacentDigits(arrayOfDigits: List[Int], alreadyAdjacentDigits: Int = 0): Boolean = {
+  def areThereExactlyTwoAdjacentDigits(arrayOfDigits: List[Int], alreadyAdjacentDigits: Int = 0): Boolean = {
     (arrayOfDigits, alreadyAdjacentDigits) match {
       case (Nil, _) => false
       case (_ :: Nil, numOfAdjacent) => if (numOfAdjacent == 2) true else false
       case (h :: t, 0) =>
-        if (h == t.head) areThereTwoAdjacentDigits(t, 2) else areThereTwoAdjacentDigits(t)
+        if (h == t.head) areThereExactlyTwoAdjacentDigits(t, 2) else areThereExactlyTwoAdjacentDigits(t)
       case (h :: t, numOfAdjacent) =>
-        if (h == t.head) areThereTwoAdjacentDigits(t, numOfAdjacent + 1) else {
-        if (numOfAdjacent == 2) true else areThereTwoAdjacentDigits(t)
+        if (h == t.head) areThereExactlyTwoAdjacentDigits(t, numOfAdjacent + 1) else {
+        if (numOfAdjacent == 2) true else areThereExactlyTwoAdjacentDigits(t)
       }
     }
   }
@@ -27,7 +27,7 @@ object day4 extends App {
     var counter = 0;
     for (i <- a to b) {
       val arrayOfDigits: List[Int] = i.toString.map(_.asDigit).toList
-      if (isOrdered(arrayOfDigits) && areThereTwoAdjacentDigits(arrayOfDigits)) {
+      if (isOrdered(arrayOfDigits) && areThereExactlyTwoAdjacentDigits(arrayOfDigits)) {
         counter = counter + 1
       }
     }
