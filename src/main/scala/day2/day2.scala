@@ -1,4 +1,3 @@
-import scala.collection.mutable.ListBuffer
 object Day2 extends App {
   val ADD_VALUE = 1
   val MULTIPLICATION_VALUE = 2
@@ -8,7 +7,7 @@ object Day2 extends App {
   def stringToIntList(input: String): List[Int] = input.split(",").map(_.toInt).toList
 
   def runProgram(intcode: List[Int], noun: Int, verb: Int): Int = {
-    val memory = intcode.to[ListBuffer]
+    val memory = intcode.toBuffer
     memory(1) = noun
     memory(2) = verb
     var instructionPointer = 0

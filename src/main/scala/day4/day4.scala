@@ -1,5 +1,3 @@
-package day4
-
 object day4 extends App {
 
   def isOrdered(arrayOfDigits: List[Int]): Boolean = {
